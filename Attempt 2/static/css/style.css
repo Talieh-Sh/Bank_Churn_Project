@@ -1,0 +1,19 @@
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.chart-container {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#customer-map {
+    height: 400px;
+}
+
+.chart-container h3 {
+    margin-bottom: 20px;
+}
