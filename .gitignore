@@ -159,3 +159,5 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 dbpassword.txt
+Attemp 1/Resources/train.csv
+Attempt 2/static/data/train.csv
