@@ -65,7 +65,39 @@ def dashboard():
     return render_template("index.html")
 
 
-############# Route #3 (Sample Data) ###############
+
+############# Route #3 (Filter Options) ###############
+@app.route("/api/filter_options")
+def filter_options():
+    # Establish session (link) from Python to the SQLite DB
+    session = Session(engine)
+
+    # Assuming 'gender', 'country', and 'exited' are column names in your 'churn_data' table
+    # Query the unique genders from the churn_data table
+    query_genders = session.query(churn_data.gender).distinct().all()
+    genders = [row.gender for row in query_genders]
+
+    # Query the unique countries from the churn_data table
+    query_countries = session.query(churn_data.geography).distinct().all()
+    countries = [row.geography for row in query_countries]
+
+    # Query the unique churn values (assuming boolean or discrete values) from the churn_data table
+    query_churn = session.query(churn_data.exited).distinct().all()
+    churn = [float(row.exited) if isinstance(row.exited, Decimal) else row.exited for row in query_churn]
+    
+
+    # Stores the information in a dictionary (Gender, Country, Churn)
+    results = {
+        "Gender": genders,
+        "Country": countries,
+        "Churn": churn
+    }
+
+    # Return the JSON 'results' dictionary that includes all options to populate for the HTML interactive filter tools 
+    return jsonify(results)
+
+
+############# Route #4 (Sample Data) ###############
 @app.route("/api/v1.0/sample_data")
 def sample_data():
     # Used to preview some of the data from the Bank Churn database
