@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="static/css/style.css"/>
+    <link rel="stylesheet" href="static/css/spinner.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <style>
+        /* Additional styles to ensure select2 is full-width */
+        .select2-container--default .select2-selection--multiple {
+            width: 100%;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+</head>
+<body>
+    <div id="filter-box">
+        <div id="filter-form" style="display: none;">
+
+            <label for="geographyDropdown">Select Geography: </label>
+            <select id="geographyDropdown" multiple="multiple" style=" width: 400px;">
+            </select>
+           
+            <label for="genderDropdown">Select Gender: </label>
+            <select id="genderDropdown" multiple="multiple"  style=" width: 100px;"></select>
+
+            <label for="churnDropdown">Select Churn: </label>
+            <select id="churnDropdown" multiple="multiple"  style=" width: 100px;"></select>
+
+            <button onclick="updateData()">Update Charts</button>
+        </div> 
+        <div id="filter-spinner" style="display: none;">
+            <img src="static/img/spinner.gif" alt="Loading..." />
+        </div>
+
+    </div>
+    <div id="charts-container">
+        <div>
+            <div class="visual-box">
+                 <div id="gender-chart"></div>
+            </div>
+
+            <div id="pie-chart-spinner" style="display: none;">
+                <img src="static/img/spinner.gif" alt="Loading..." />
+            </div>
+        </div>
+        <div>
+            <div class="visual-box">
+                 <div id="bar-chart"></div>
+            </div>
+
+            <div id="bar-chart-spinner" style="display: none;">
+                <img src="static/img/spinner.gif" alt="Loading..." />
+            </div>
+        </div>
+        <div>
+            <div class="visual-box">
+                <div id="map"></div>
+            </div>
+           
+            <div id="map-spinner" style="display: none;">
+                <img src="static/img/spinner.gif" alt="Loading..." />
+            </div>
+        </div>
+        <div>
+            <div class="visual-box">
+                <div id="box-plot"></div>
+            </div>
+          
+            <div id="box-plot-spinner" style="display: none;">
+                <img src="static/img/spinner.gif" alt="Loading..." />
+            </div>
+        </div>
+    </div>
+
+    <script src="static/js/script.js"></script>
+</body>
+</html>
