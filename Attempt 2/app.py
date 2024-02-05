@@ -4,6 +4,8 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, and_
 from urllib.parse import unquote
+from urllib.parse import unquote_plus
+
 
 from flask import Flask, jsonify, render_template
 from decimal import Decimal
@@ -158,32 +160,22 @@ def sample_data():
 ############# Route #5 ([Dynamic API Route] Query Data based on Filters Applied) ###############
 @app.route("/api/filter_data/<gender>/<geography>/<exited>")
 def filtered_churn_data(gender, geography, exited):
-    # Validate the inputs
-    valid_genders = ['Male', 'Female']
-    valid_geographies = ['Spain', 'France', 'Germany']  # Assuming these are the countries in your dataset
-    valid_exited_values = ['0', '1']
-    
-    if gender not in valid_genders:
-        return jsonify({"error": "Bad Request: Gender parameter must be 'Male' or 'Female'."}), 400
+    # Split the comma-separated strings into lists
+    genders = gender.split(',')
+    geographies = unquote_plus(geography).split(',')
+    exited_values = exited.split(',')
 
-    if geography not in valid_geographies:
-        return jsonify({"error": f"Bad Request: Geography parameter must be one of {valid_geographies}."}), 400
-    
-    if exited not in valid_exited_values:
-        return jsonify({"error": "Bad Request: Exited parameter must be '0' or '1'."}), 400
-    
-    # Decode the geography parameter to handle URL encoding
-    geography = unquote(geography)
+    # Convert exited_values to floats (assuming they are stored as numeric in the database)
+    exited_values = [float(value) for value in exited_values]
 
     # Open a session to the database
     session = Session(engine)
 
-    # Build the filter conditions, ensuring we match the attribute names exactly as in your database model
-    filters = [
-        churn_data.gender == gender,
-        churn_data.geography == geography,
-        churn_data.exited == float(exited)  # Cast exited to float to match the database representation
-    ]
+    # Build the filter conditions using 'in_' for matching any of the values in the lists
+    filters = []
+    if genders: filters.append(churn_data.gender.in_(genders))
+    if geographies: filters.append(churn_data.geography.in_(geographies))
+    if exited_values: filters.append(churn_data.exited.in_(exited_values))
     
     # Execute the query with filters
     query_result = session.query(churn_data).filter(and_(*filters)).all()
@@ -205,7 +197,7 @@ def filtered_churn_data(gender, geography, exited):
             'HasCrCard': float(row.hascrcard) if isinstance(row.hascrcard, Decimal) else row.hascrcard,
             'IsActiveMember': float(row.isactivemember) if isinstance(row.isactivemember, Decimal) else row.isactivemember,
             'EstimatedSalary': float(row.estimatedsalary) if isinstance(row.estimatedsalary, Decimal) else row.estimatedsalary,
-            'Exited':float(row.exited) if isinstance(row.exited, Decimal) else row.exited,
+            'Exited': float(row.exited) if isinstance(row.exited, Decimal) else row.exited,
         }
         for row in query_result
     ]
@@ -213,12 +205,13 @@ def filtered_churn_data(gender, geography, exited):
     # Return the filtered data as JSON
     return jsonify({
         "filter": {
-            "gender": gender,
-            "geography": geography,
-            "exited": exited
+            "gender": genders,
+            "geography": geographies,
+            "exited": exited_values
         },
         "data": data_list
     })
+
 # Run the Flask app
 if __name__ == '__main__':
     app.run(debug=True, port=9090)
