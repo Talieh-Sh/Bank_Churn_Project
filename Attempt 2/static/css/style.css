@@ -23,6 +23,10 @@ body, html {
     height: fit-content;
     label{
         margin-left: 10px;
+        display: inline-block; /* Display label and dropdown on the same line */
+        vertical-align: top; /* Align label to the top of the dropdown */
+        margin-right: 10px; /* Add some spacing between label and dropdown */
+        
     }
     select{
         margin-left: 10px;
@@ -30,6 +34,10 @@ body, html {
     button{
         margin-left: 10px;
     }
+}
+#geographyDropdown {
+    min-width: 200px;
+    width: 100%;
 }
 
 #charts-container {

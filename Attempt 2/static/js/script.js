@@ -1,5 +1,17 @@
 const baseURL = 'http://localhost:9090'
 
+const defaultFilterParams = {
+    geographies: ["Spain"],
+    gender: "Male",
+    churn: "1"
+};
+ 
+$(document).ready(function() {
+    $('#geographyDropdown').select2();
+    $('#genderDropdown').select2();
+    $('#churnDropdown').select2();
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     fetchFilterOptions(); // New function to load dropdown options
     loadData(); // Load data on page load with default parameters
@@ -14,8 +26,8 @@ function fetchFilterOptions() {
         document.getElementById('filter-spinner').style.display = 'none';
         document.getElementById('filter-form').style.display = 'inherit';
 
-        populateDropdown('genderDropdown', data.Country);
-        populateDropdown('geographyDropdown', data.Gender);
+        populateDropdown('geographyDropdown', data.Country);
+        populateDropdown('genderDropdown', data.Gender);
         populateDropdown('churnDropdown', data.Churn);
     })
     .catch(error => {
@@ -31,25 +43,29 @@ function populateDropdown(dropdownId, options) {
         const optElement = document.createElement('option');
         optElement.value = option;
         optElement.textContent = option;
+        if (dropdownId == 'geographyDropdown' && defaultFilterParams.geographies.includes(option) ) {
+            optElement.selected = true;
+        }
+        if (dropdownId == 'genderDropdown' && defaultFilterParams.gender == option ) {
+            optElement.selected = true;
+        }
+        if (dropdownId == 'churnDropdown' && defaultFilterParams.churn == option ) {
+            optElement.selected = true;
+        }
         dropdown.appendChild(optElement);
     });
 }
 
-function loadData(params = {
-            gender: "Male",
-            country: "Spain",
-            churn: "1"
-    }) {
+function loadData(params = defaultFilterParams) {
 
-    var elems = document.querySelectorAll('.visual-box');
-    elems.forEach(function(el) {
-        el.style.display = 'none';
-    });
+    updateAllVisualBoxes('none');
     updateSpinnerOfAllVisualBoxes('inherit');
     
-    const {country, gender, churn} = params;
+    const {gender, geographies, churn} = params;
 
-    let queryAPI = `/api/filter_data/${encodeURIComponent(gender)}/${encodeURIComponent(country)}/${encodeURIComponent(churn)}`;
+    const geographiesCommaDelimited = geographies.join(',');
+
+    let queryAPI = `/api/filter_data/${encodeURIComponent(gender)}/${encodeURIComponent(geographiesCommaDelimited)}/${encodeURIComponent(churn)}`;
     let queryURL = baseURL + queryAPI;
 
     fetch(queryURL, {
@@ -59,16 +75,20 @@ function loadData(params = {
     .then(response => response.json())
     .then(data => {
         updateSpinnerOfAllVisualBoxes('none');
-
-        var elems = document.querySelectorAll('.visual-box');
-        elems.forEach(function(el) {
-            el.style.display = 'inherit';
-        });
+        updateAllVisualBoxes('inherit');
         renderCharts(data);
     })
     .catch(error => {
         updateSpinnerOfAllVisualBoxes('none');
+        updateAllVisualBoxes('none');
         console.error('Error fetching data:', error)
+    });
+}
+
+function updateAllVisualBoxes(displayValue) {
+    var elems = document.querySelectorAll('.visual-box');
+    elems.forEach(function (el) {
+        el.style.display = displayValue;
     });
 }
 
@@ -119,8 +139,18 @@ function renderPieChart(data) {
 }
 
 function updateData() {
+    const geographyDropdownValue = getSelectedOptions('geographyDropdown');
     const genderDropdownValue = document.getElementById('genderDropdown').value;
-    const geographyDropdownValue = document.getElementById('geographyDropdown').value;
     const churnDropdownValue = document.getElementById('churnDropdown').value;
-    loadData({ country: genderDropdownValue, gender: geographyDropdownValue , churn: churnDropdownValue });
+    loadData({ geographies: geographyDropdownValue, gender: genderDropdownValue , churn: churnDropdownValue });
+}
+
+function getSelectedOptions(dropdownId) {
+    const selectElement = document.getElementById(dropdownId);
+    const selectedValues = Array.from(selectElement.selectedOptions).map(option => option.value);
+    console.log("Selected values:", selectedValues); // Logs an array of selected option values
+    // To get the text of selected options
+    const selectedTexts = Array.from(selectElement.selectedOptions).map(option => option.text);
+    console.log("Selected texts:", selectedTexts); // Logs an array of the text of selected options
+    return selectedValues; // Or return selectedTexts if you need the texts
 }
