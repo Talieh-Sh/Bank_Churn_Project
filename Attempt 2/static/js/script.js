@@ -1,4 +1,4 @@
-const baseURL = 'http://localhost:9090/'
+const baseURL = 'http://localhost:9090'
 
 document.addEventListener('DOMContentLoaded', function() {
     fetchFilterOptions(); // New function to load dropdown options
@@ -29,11 +29,11 @@ function populateDropdown(dropdownId, options) {
 function loadData(params = {}) {
 
     
-    let gender = "M";
-    let country = "1";
+    let gender = "Male";
+    let geography = "Spain";
     let churn = "0";
 
-    let queryAPI = `/api/filter_data/${gender}/${country}/${churn}`;
+    let queryAPI = `/api/filter_data/${gender}/${geography}/${churn}`;
     let queryURL = baseURL + queryAPI;
 
     fetch(queryURL, {
