@@ -41,10 +41,11 @@ function loadData(params = {
             churn: "1"
     }) {
 
-    document.getElementById('pie-chart-spinner').style.display = 'inherit';
-    document.getElementById('bar-chart-spinner').style.display = 'inherit';
-    document.getElementById('map-spinner').style.display = 'inherit';
-    document.getElementById('box-plot-spinner').style.display = 'inherit';
+    var elems = document.querySelectorAll('.visual-box');
+    elems.forEach(function(el) {
+        el.style.display = 'none';
+    });
+    updateSpinnerOfAllVisualBoxes('inherit');
     
     const {country, gender, churn} = params;
 
@@ -57,20 +58,25 @@ function loadData(params = {
     })
     .then(response => response.json())
     .then(data => {
-        document.getElementById('pie-chart-spinner').style.display = 'none';
-        document.getElementById('bar-chart-spinner').style.display = 'none';
-        document.getElementById('map-spinner').style.display = 'none';
-        document.getElementById('box-plot-spinner').style.display = 'none';
-       
+        updateSpinnerOfAllVisualBoxes('none');
+
+        var elems = document.querySelectorAll('.visual-box');
+        elems.forEach(function(el) {
+            el.style.display = 'inherit';
+        });
         renderCharts(data);
     })
     .catch(error => {
-        document.getElementById('pie-chart-spinner').style.display = 'none';
-        document.getElementById('bar-chart-spinner').style.display = 'none';
-        document.getElementById('map-spinner').style.display = 'none';
-        document.getElementById('box-plot-spinner').style.display = 'none';
+        updateSpinnerOfAllVisualBoxes('none');
         console.error('Error fetching data:', error)
     });
+}
+
+function updateSpinnerOfAllVisualBoxes(displayValue) {
+    document.getElementById('pie-chart-spinner').style.display = displayValue;
+    document.getElementById('bar-chart-spinner').style.display =  displayValue;
+    document.getElementById('map-spinner').style.display =  displayValue;
+    document.getElementById('box-plot-spinner').style.display =  displayValue;
 }
 
 function renderCharts(response) {
@@ -110,8 +116,6 @@ function renderPieChart(data) {
     };
 
     Plotly.newPlot('gender-chart', plotData, layout);
-    Plotly.newPlot('gender-chart2', plotData, layout);
-    Plotly.newPlot('gender-chart3', plotData, layout);
 }
 
 function updateData() {

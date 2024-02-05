@@ -15,11 +15,11 @@
 <body>
     <div id="filter-box">
         <div id="filter-form" style="display: none;">
-            <label>Select Gender: </label>
+            <label for="genderDropdown">Select Gender: </label>
             <select id="genderDropdown"></select>
-            <label>Select Geography: </label>
+            <label for="geographyDropdown">Select Geography: </label>
             <select id="geographyDropdown"></select>
-            <label>Select Churn: </label>
+            <label for="churnDropdown">Select Churn: </label>
             <select id="churnDropdown"></select>
             <button onclick="updateData()">Update Charts</button>
         </div> 
@@ -29,25 +29,38 @@
 
     </div>
     <div id="charts-container">
-        <div id="pie-chart">
-            <div id="gender-chart"></div>
+        <div>
+            <div class="visual-box">
+                 <div id="gender-chart"></div>
+            </div>
+
             <div id="pie-chart-spinner" style="display: none;">
                 <img src="static/img/spinner.gif" alt="Loading..." />
             </div>
         </div>
-        <div id="bar-chart">
-            <div id="gender-chart2"></div>
+        <div>
+            <div class="visual-box">
+                 <div id="bar-chart"></div>
+            </div>
+
             <div id="bar-chart-spinner" style="display: none;">
                 <img src="static/img/spinner.gif" alt="Loading..." />
             </div>
         </div>
-        <div id="map" style="height: 400px;">
+        <div>
+            <div class="visual-box">
+                <div id="map"></div>
+            </div>
+           
             <div id="map-spinner" style="display: none;">
                 <img src="static/img/spinner.gif" alt="Loading..." />
             </div>
         </div>
-        <div id="box-plot">
-            <div id="gender-chart3"></div>
+        <div>
+            <div class="visual-box">
+                <div id="box-plot"></div>
+            </div>
+          
             <div id="box-plot-spinner" style="display: none;">
                 <img src="static/img/spinner.gif" alt="Loading..." />
             </div>

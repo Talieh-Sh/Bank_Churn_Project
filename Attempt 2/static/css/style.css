@@ -49,9 +49,6 @@ body, html {
     background: #ffffff;
 }
 
-#map {
-    height: 400px; /* Fixed height for the map */
-}
 
 /* Responsive adjustments */
 @media (min-width: 1200px) { /* Extra large devices */
