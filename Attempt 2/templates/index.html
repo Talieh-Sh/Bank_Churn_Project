@@ -1,69 +1,35 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Metadata -->
-    <title>Customer Data Visualization</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="utf-8" />
-
-    <!-- Fonts and other stylesheets -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" />
-
-    <!-- Leaflet CSS for Map Visualization -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-
-    <!-- Custom CSS for Specific Visualizations -->
-    <link href="./static/css/style.css" rel="stylesheet" type="text/css"/>
-
-    <!-- Plotly.js for Chart Visualizations -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-
-    <!-- D3.js for Data Loading and Processing -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 <body>
-
-    <div class="home-container">
-        <div id="visualisation" class="home-container01">
-            <!-- Map Container for Geographical Distribution -->
-            <div id="map-container" class="home-container02">
-                <div id="customer-map"></div>
-            </div>
-
-            <!-- Container for Charts -->
-            <div id="charts-container" class="home-container03">
-                <!-- Gender Analysis Chart -->
-                <div id="gender-analysis-chart" class="chart-container">
-                    <h3>Gender Analysis</h3>
-                    <div id="gender-chart"></div>
-                </div>
-
-                <!-- Credit Score Analysis Chart -->
-                <div id="credit-score-analysis-chart" class="chart-container">
-                    <h3>Credit Score Analysis</h3>
-                    <div id="credit-score-chart"></div>
-                </div>
-
-                <!-- Balance vs. Loyalty Chart -->
-                <div id="balance-loyalty-analysis-chart" class="chart-container">
-                    <h3>Balance vs. Loyalty</h3>
-                    <div id="balance-loyalty-chart"></div>
-                </div>
-            </div>
+    <div id="filter-box">
+        <select id="dropdown1"></select>
+        <select id="dropdown2"></select>
+        <button onclick="updateData()">Update Charts</button>
+    </div>
+    <div id="charts-container">
+        <div id="pie-chart">
+            <div id="gender-chart"></div>
+        </div>
+        <div id="bar-chart">
+            <div id="gender-chart2"></div>
+        </div>
+        <div id="map" style="height: 400px;"></div>
+        <div id="box-plot">
+            <div id="gender-chart3"></div>
         </div>
     </div>
 
-    <!-- Button to API Guide -->
-    <div id="go-to-website-button" class="position-absolute bottom-0 end-0 m-3" style="z-index: 999999;">
-        <a href="http://127.0.0.1:5000/" class="btn btn-primary" target="_blank">API Guide</a>
-    </div>
-
-    <!-- Leaflet JS for Map Visualization -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-
-    <!-- Custom JavaScript for Data Processing and Visualizations -->
-    <script src="./static/js/data-processing.js"></script>
-
+    <script src="script.js"></script>
 </body>
 </html>
