@@ -1,8 +1,8 @@
 const baseURL = 'http://localhost:9090'
 
 const defaultFilterParams = {
-    geographies: ["Germany","Spain"],
-    genders: ["Male"],
+    geographies: ["Germany","Spain","France"],
+    genders: ["Male","Female"],
     churns: [1,0]
 };
  
