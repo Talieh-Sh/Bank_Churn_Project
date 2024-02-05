@@ -1,9 +1,9 @@
 const baseURL = 'http://localhost:9090'
 
 const defaultFilterParams = {
-    geographies: ["Spain"],
-    gender: "Male",
-    churn: "1"
+    geographies: ["Germany","Spain"],
+    genders: ["Male"],
+    churns: [1,0]
 };
  
 $(document).ready(function() {
@@ -46,10 +46,11 @@ function populateDropdown(dropdownId, options) {
         if (dropdownId == 'geographyDropdown' && defaultFilterParams.geographies.includes(option) ) {
             optElement.selected = true;
         }
-        if (dropdownId == 'genderDropdown' && defaultFilterParams.gender == option ) {
+        
+        if (dropdownId == 'genderDropdown' && defaultFilterParams.genders.includes(option) ) {
             optElement.selected = true;
         }
-        if (dropdownId == 'churnDropdown' && defaultFilterParams.churn == option ) {
+        if (dropdownId == 'churnDropdown' && defaultFilterParams.churns.includes(option) ) {
             optElement.selected = true;
         }
         dropdown.appendChild(optElement);
@@ -61,11 +62,13 @@ function loadData(params = defaultFilterParams) {
     updateAllVisualBoxes('none');
     updateSpinnerOfAllVisualBoxes('inherit');
     
-    const {gender, geographies, churn} = params;
+    const {genders, geographies, churns} = params;
 
     const geographiesCommaDelimited = geographies.join(',');
+    const gendersCommaDelimited = genders.join(',');
+    const churnsCommaDelimited = churns.join(',');
 
-    let queryAPI = `/api/filter_data/${encodeURIComponent(gender)}/${encodeURIComponent(geographiesCommaDelimited)}/${encodeURIComponent(churn)}`;
+    let queryAPI = `/api/filter_data/${encodeURIComponent(gendersCommaDelimited)}/${encodeURIComponent(geographiesCommaDelimited)}/${encodeURIComponent(churnsCommaDelimited)}`;
     let queryURL = baseURL + queryAPI;
 
     fetch(queryURL, {
@@ -140,9 +143,9 @@ function renderPieChart(data) {
 
 function updateData() {
     const geographyDropdownValue = getSelectedOptions('geographyDropdown');
-    const genderDropdownValue = document.getElementById('genderDropdown').value;
-    const churnDropdownValue = document.getElementById('churnDropdown').value;
-    loadData({ geographies: geographyDropdownValue, gender: genderDropdownValue , churn: churnDropdownValue });
+    const genderDropdownValue = getSelectedOptions('genderDropdown');
+    const churnDropdownValue = getSelectedOptions('churnDropdown');
+    loadData({ geographies: geographyDropdownValue, genders: genderDropdownValue , churns: churnDropdownValue });
 }
 
 function getSelectedOptions(dropdownId) {
