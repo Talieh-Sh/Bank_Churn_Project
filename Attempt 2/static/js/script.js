@@ -9,8 +9,9 @@ function fetchFilterOptions() {
     fetch('/api/filter_options')
     .then(response => response.json())
     .then(data => {
-        populateDropdown('dropdown1', data.Country);
-        populateDropdown('dropdown2', data.Gender);
+        populateDropdown('genderDropdown', data.Country);
+        populateDropdown('geographyDropdown', data.Gender);
+        populateDropdown('churnDropdown', data.Churn);
     })
     .catch(error => console.error('Error fetching filter options:', error));
 }
@@ -26,14 +27,16 @@ function populateDropdown(dropdownId, options) {
     });
 }
 
-function loadData(params = {}) {
+function loadData(params = {
+            genderDropdownValue:"Male",
+            geographyDropdownValue: "Spain",
+            churnDropdownValue: "1"
+    }) {
 
-    
-    let gender = "Male";
-    let geography = "Spain";
-    let churn = "0";
 
-    let queryAPI = `/api/filter_data/${gender}/${geography}/${churn}`;
+     const {genderDropdownValue, geographyDropdownValue, churnDropdownValue} = params;
+
+    let queryAPI = `/api/filter_data/${encodeURIComponent(genderDropdownValue)}/${encodeURIComponent(geographyDropdownValue)}/${encodeURIComponent(churnDropdownValue)}`;
     let queryURL = baseURL + queryAPI;
 
     fetch(queryURL, {
@@ -89,7 +92,8 @@ function renderPieChart(data) {
 }
 
 function updateData() {
-    const dropdown1Value = document.getElementById('dropdown1').value;
-    const dropdown2Value = document.getElementById('dropdown2').value;
-    loadData({ country: dropdown1Value, gender: dropdown2Value });
+    const genderDropdownValue = document.getElementById('genderDropdown').value;
+    const geographyDropdownValue = document.getElementById('geographyDropdown').value;
+    const churnDropdownValue = document.getElementById('churnDropdownValue').value;
+    loadData({ country: genderDropdownValue, gender: geographyDropdownValue , churn: churnDropdownValue });
 }
