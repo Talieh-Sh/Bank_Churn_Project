@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="static/css/style.css"/>
+    <link rel="stylesheet" href="static/css/spinner.css"/>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
@@ -13,21 +14,40 @@
 </head>
 <body>
     <div id="filter-box">
-        <select id="genderDropdown"></select>
-        <select id="geographyDropdown"></select>
-        <select id="churnDropdown"></select>
-        <button onclick="updateData()">Update Charts</button>
+        <div id="filter-form" style="display: none;">
+            <select id="genderDropdown"></select>
+            <select id="geographyDropdown"></select>
+            <select id="churnDropdown"></select>
+            <button onclick="updateData()">Update Charts</button>
+        </div> 
+        <div id="filter-spinner" style="display: none;">
+            <img src="static/img/spinner.gif" alt="Loading..." />
+        </div>
+
     </div>
     <div id="charts-container">
         <div id="pie-chart">
             <div id="gender-chart"></div>
+            <div id="pie-chart-spinner" style="display: none;">
+                <img src="static/img/spinner.gif" alt="Loading..." />
+            </div>
         </div>
         <div id="bar-chart">
             <div id="gender-chart2"></div>
+            <div id="bar-chart-spinner" style="display: none;">
+                <img src="static/img/spinner.gif" alt="Loading..." />
+            </div>
         </div>
-        <div id="map" style="height: 400px;"></div>
+        <div id="map" style="height: 400px;">
+            <div id="map-spinner" style="display: none;">
+                <img src="static/img/spinner.gif" alt="Loading..." />
+            </div>
+        </div>
         <div id="box-plot">
             <div id="gender-chart3"></div>
+            <div id="box-plot-spinner" style="display: none;">
+                <img src="static/img/spinner.gif" alt="Loading..." />
+            </div>
         </div>
     </div>
 

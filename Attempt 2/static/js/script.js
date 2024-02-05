@@ -6,14 +6,22 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function fetchFilterOptions() {
+    document.getElementById('filter-spinner').style.display = 'inherit';
+
     fetch('/api/filter_options')
     .then(response => response.json())
     .then(data => {
+        document.getElementById('filter-spinner').style.display = 'none';
+        document.getElementById('filter-form').style.display = 'inherit';
+
         populateDropdown('genderDropdown', data.Country);
         populateDropdown('geographyDropdown', data.Gender);
         populateDropdown('churnDropdown', data.Churn);
     })
-    .catch(error => console.error('Error fetching filter options:', error));
+    .catch(error => {
+        document.getElementById('filter-spinner').style.display = 'none';
+        console.error('Error fetching filter options:', error)
+    });
 }
 
 function populateDropdown(dropdownId, options) {
@@ -28,15 +36,19 @@ function populateDropdown(dropdownId, options) {
 }
 
 function loadData(params = {
-            genderDropdownValue:"Male",
-            geographyDropdownValue: "Spain",
-            churnDropdownValue: "1"
+            gender: "Male",
+            country: "Spain",
+            churn: "1"
     }) {
 
+    document.getElementById('pie-chart-spinner').style.display = 'inherit';
+    document.getElementById('bar-chart-spinner').style.display = 'inherit';
+    document.getElementById('map-spinner').style.display = 'inherit';
+    document.getElementById('box-plot-spinner').style.display = 'inherit';
+    
+    const {country, gender, churn} = params;
 
-     const {genderDropdownValue, geographyDropdownValue, churnDropdownValue} = params;
-
-    let queryAPI = `/api/filter_data/${encodeURIComponent(genderDropdownValue)}/${encodeURIComponent(geographyDropdownValue)}/${encodeURIComponent(churnDropdownValue)}`;
+    let queryAPI = `/api/filter_data/${encodeURIComponent(gender)}/${encodeURIComponent(country)}/${encodeURIComponent(churn)}`;
     let queryURL = baseURL + queryAPI;
 
     fetch(queryURL, {
@@ -45,9 +57,20 @@ function loadData(params = {
     })
     .then(response => response.json())
     .then(data => {
+        document.getElementById('pie-chart-spinner').style.display = 'none';
+        document.getElementById('bar-chart-spinner').style.display = 'none';
+        document.getElementById('map-spinner').style.display = 'none';
+        document.getElementById('box-plot-spinner').style.display = 'none';
+       
         renderCharts(data);
     })
-    .catch(error => console.error('Error fetching data:', error));
+    .catch(error => {
+        document.getElementById('pie-chart-spinner').style.display = 'none';
+        document.getElementById('bar-chart-spinner').style.display = 'none';
+        document.getElementById('map-spinner').style.display = 'none';
+        document.getElementById('box-plot-spinner').style.display = 'none';
+        console.error('Error fetching data:', error)
+    });
 }
 
 function renderCharts(response) {
@@ -94,6 +117,6 @@ function renderPieChart(data) {
 function updateData() {
     const genderDropdownValue = document.getElementById('genderDropdown').value;
     const geographyDropdownValue = document.getElementById('geographyDropdown').value;
-    const churnDropdownValue = document.getElementById('churnDropdownValue').value;
+    const churnDropdownValue = document.getElementById('churnDropdown').value;
     loadData({ country: genderDropdownValue, gender: geographyDropdownValue , churn: churnDropdownValue });
 }
