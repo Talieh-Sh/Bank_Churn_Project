@@ -21,6 +21,15 @@ body, html {
 }
 #filter-form{
     height: fit-content;
+    label{
+        margin-left: 10px;
+    }
+    select{
+        margin-left: 10px;
+    }
+    button{
+        margin-left: 10px;
+    }
 }
 
 #charts-container {
