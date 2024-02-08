@@ -50,7 +50,7 @@
         <p>
             In this intriguing section, you hold the key to customer loyalty. Input customer data below, and our advanced machine learning process will reveal whether they'll stay or go.
         </p>
-        <form id="loyalty-form">
+        <form id="loyalty-form" method="GET" action="/predict">
             <div class="input-group">
                 <label for="credit_score">Credit Score:</label>
                 <input type="number" id="credit_score" name="credit_score" required>
@@ -90,10 +90,24 @@
                     <option value="Female">Female</option>
                 </select>
             </div>
+            <div class="input-group">
+                <label for="hascrcard">Credit Card:</label>
+                <select id="hascrcard" name="creditcard" required>
+                    <option value="1">Has Creadit Card</option>
+                    <option value="0">No Credit Card</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="isactivemember">Active Member?</label>
+                <select id="isactivemember" name="creditcard" required>
+                    <option value="1">Active Member</option>
+                    <option value="0">Not Active Member</option>
+                </select>
+            </div>
             <button type="submit">Check Loyalty</button>
         </form>
         <!-- Display prediction result here -->
-        <div id="prediction-result" style="margin-top: 20px;"></div>
+        <div id="prediction-result" style="margin-top: 20px;">{{prediction_text}}</div>
     </section>
 
     <!-- <script src="{{ url_for('static', filename='js/data-processing.js') }}"></script> -->
