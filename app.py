@@ -1,20 +1,18 @@
 # Importing related libraries and modules
-import sqlalchemy
-from sqlalchemy.ext.automap import automap_base
-from sqlalchemy.orm import Session
-from sqlalchemy import create_engine, and_
-from urllib.parse import unquote
-from urllib.parse import unquote_plus
-
-
-from flask import Flask, jsonify, render_template
-from decimal import Decimal
-
 import os
 import re
-from urllib.parse import unquote
- 
+#import pickle
 
+from flask import Flask, jsonify, render_template, request
+from sqlalchemy import create_engine, and_
+from sqlalchemy.ext.automap import automap_base
+from sqlalchemy.orm import Session
+from decimal import Decimal
+from urllib.parse import unquote_plus
+from urllib.parse import unquote
+import sqlalchemy
+from joblib import load
+import numpy as np
 
 
 #################################################
@@ -50,7 +48,12 @@ print(dir(churn_data_class))  # This will print out all attributes/columns of th
 
 # Access the "churn_data" table
 churn_data = Base.classes.churn_data
-
+#################################################
+#Loading Machine learning model
+#################################################
+# Assuming your model is named 'model.sav'
+model_path = 'regression_model'
+model = load(model_path)
 
 #################################################
 # Flask API App Setup
@@ -62,12 +65,80 @@ app = Flask(__name__)
 #################################################
 # Flask API Routes
 #################################################
-
+# load_model =()
 ############# Route #1 (Homepage) ###############
+# @app.route("/")
+# def homepage():
+#     print(request)
+#     if request.method == 'GET':
+#    # If 'num' is None, the user has requested page the first time
+#         if(request.args.get('credit_score') == None):
+#             print("Nothing")
+#         else:
+#             print(request.args.get('credit_score')) 
+
+# @app.route("/")
+# def homepage():
+#     print(request)
+#     if request.method == 'GET':
+#    # If 'num' is None, the user has requested page the first time
+#         if(request.args.get('credit_score') == None):
+#             print("Nothing")
+#         else:
+#             print(request.args.get('credit_score'))            
+
+
+#     # Serve the homepage HTML webpage (homepage.html)
+#     return render_template("homepage.html")
+
 @app.route("/")
 def homepage():
     # Serve the homepage HTML webpage (homepage.html)
     return render_template("homepage.html")
+
+
+
+############# Add Route for Handling Form Submission ###############
+@app.route("/predict", methods=["GET"])
+def predict():
+    # Extracting data from the form submission
+    CreditScore =141 #request.args.get('credit_score', type=float)
+    Age = 44#request.args.get('age', type=float)
+    Tenure = 4# request.args.get('tenure', type=float)
+    Balance = 4741#request.args.get('balance', type=float)
+    NumOfProducts =2# request.args.get('num_of_products', type=int)
+    HasCrCard = 1#request.args.get('hascrcard', type=int)  # Assuming this is part of the form submission
+    IsActiveMember =1# request.args.get('isactivemember', type=int)  # Assuming this is part of the form submission
+    EstimatedSalary =343443# request.args.get('estimated_salary', type=float)
+    gender ='Male' #request.args.get('gender')
+    geography ='France'# request.args.get('geography')
+
+    # Gender binary encoding
+    Is_Male = 1 if gender == 'Male' else 0
+    Is_Female = 0 if gender == 'Male' else 1
+
+    # Geography binary encoding
+    Is_Germany = Is_Spain = Is_France = 0
+    if geography == 'Germany':
+        Is_Germany = 1
+    elif geography == 'Spain':
+        Is_Spain = 1
+    elif geography == 'France':
+        Is_France = 1
+
+    # Prepare the feature vector according to the specified format
+    features = np.array([CreditScore, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember, EstimatedSalary, Is_Male, Is_Female, Is_Germany, Is_Spain, Is_France]).reshape(1,-1)
+    print(features)
+    
+    # Predicting the churn status
+    prediction = model.predict(features)
+    print(prediction)
+    
+    result = 'Loyal' if prediction[0] == 0 else 'Exited'
+    print(result)
+    # Return result to the same page or to a new prediction result page
+    return render_template('homepage.html', prediction_text=f'Customer Loyalty Status: {result}')
+
 
 
 ############# Route #2 (Interactive Dashboard) ###############
@@ -214,7 +285,7 @@ def filtered_churn_data(gender, geography, exited):
 
 # Run the Flask app
 if __name__ == '__main__':
-    app.run(debug=True, host='localhost', port=9090)
+    app.run(debug=True, host='localhost', port=9091)
 
 
 
