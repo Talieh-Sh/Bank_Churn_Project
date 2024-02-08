@@ -1,0 +1,2 @@
+CreditScore,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Is_Male,Is_Female,Is_Germany,Is_Spain,Is_France
+588,36,3,250,4,1,1,136200,1,0,1,0,0
