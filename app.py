@@ -139,10 +139,12 @@ def predict():
 
 
      # Prepare a summary of the inputs
-    input_summary = f"Credit Score: {CreditScore}, Age: {Age}, Tenure: {Tenure}, Balance: {Balance}, " \
-                    f"Number of Products: {NumOfProducts}, Has Credit Card: {'Yes' if HasCrCard == 1 else 'No'}, " \
-                    f"Active Member: {'Yes' if IsActiveMember == 1 else 'No'}, Estimated Salary: {EstimatedSalary}, " \
-                    f"Gender: {gender}, Geography: {geography}"
+    # Prepare a summary of the inputs with HTML non-breaking spaces for visual spacing
+    input_summary = f"Credit Score: {CreditScore},&nbsp;&nbsp;&nbsp;Age: {Age},&nbsp;&nbsp;&nbsp;Tenure: {Tenure},&nbsp;&nbsp;&nbsp;Balance: {Balance},&nbsp;&nbsp;&nbsp;" \
+                f"Number of Products: {NumOfProducts},&nbsp;&nbsp;&nbsp;Has Credit Card: {'Yes' if HasCrCard == 1 else 'No'},&nbsp;&nbsp;&nbsp;" \
+                f"Active Member: {'Yes' if IsActiveMember == 1 else 'No'},&nbsp;&nbsp;&nbsp;Estimated Salary: {EstimatedSalary},&nbsp;&nbsp;&nbsp;" \
+                f"Gender: {gender},&nbsp;&nbsp;&nbsp;Geography: {geography}"
+
 
     # Return result to the same page or to a new prediction result page
         # Include the summary in the context

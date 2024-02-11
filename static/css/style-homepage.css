@@ -62,7 +62,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #2d7b31;
 }
 
 #prediction-result {
@@ -91,25 +91,34 @@ button[type="submit"]:hover {
 
 
 /* New styles for input summary */
-
 .input-summary {
-    background-color: #f0f4f8; /* Lighter background for the summary */
-    border-radius: 8px; /* Rounded corners */
-    border: 1px solid #d1d5db; /* Light border */
-    padding: 20px; /* Padding inside the summary box */
-    margin-top: 20px; /* Margin from the form or any content above */
-}
-.input-summary h4 {
-    font-size: 24px;
-    margin-bottom: 15px; /* Space below the title */
-    color: #4a5568; /* Darker grey for the title */
-}
-.input-summary p {
-    font-size: 18px;
-    color: #2d3748; /* Even darker grey for the text */
-    line-height: 1.5; /* More readable line height */
+    background-color: #f9f9f9; /* Light background color for contrast */
+    border-radius: 10px; /* Rounded corners for a modern look */
+    border: 1px solid #dcdcdc; /* Subtle border */
+    padding: 20px; /* Padding around the content */
+    margin-top: 20px; /* Margin from the content above */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
 }
 
+.input-summary h4 {
+    margin-top: 0;
+    color: #333; /* Dark color for the title */
+    font-size: 20px; /* Slightly larger font size for the title */
+}
+
+#summary-content {
+    white-space: pre-wrap; /* Allows text to wrap */
+    word-wrap: break-word; /* Ensures long words do not overflow */
+    background-color: #ffffff; /* White background for the pre content */
+    border: 1px solid #eeeeee; /* Light border for the pre content */
+    border-radius: 8px; /* Rounded corners for the pre content */
+    padding: 15px; /* Padding inside the pre content */
+    color: #555; /* Dark grey color for text */
+    font-family: inherit;
+    font-size: 16px; /* Adjust font size for readability */
+    overflow-x: auto; /* Adds a horizontal scrollbar if content overflows */
+    margin-top: 10px; /* Space between the title and the pre content */
+}
 
 
 /* Styles for the "Clear Results" Button */
