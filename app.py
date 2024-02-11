@@ -111,7 +111,7 @@ def predict():
     prediction = model.predict(features)
     print(prediction)
     
-    result = 'Loyal' if prediction[0] == 0 else 'Exited'
+    result = 'Loyal' if prediction[0] == 0 else 'Not Loyal'
     print(result)
 
 
@@ -122,10 +122,13 @@ def predict():
                 f"Active Member: {'Yes' if IsActiveMember == 1 else 'No'},&nbsp;&nbsp;&nbsp;Estimated Salary: {EstimatedSalary},&nbsp;&nbsp;&nbsp;" \
                 f"Gender: {gender},&nbsp;&nbsp;&nbsp;Geography: {geography}"
 
+    # Determine result status for styling
+    result_status = 'loyal' if prediction[0] == 0 else 'not-loyal'
 
     # Return result to the same page or to a new prediction result page
         # Include the summary in the context
-    return render_template('homepage.html', prediction_text=f'Customer Loyalty Status: {result}', input_summary=input_summary)
+        # Pass result_status to the template
+    return render_template('homepage.html', prediction_text=f'Customer Loyalty Status: {result}', input_summary=input_summary, result_status=result_status)
 
 
 

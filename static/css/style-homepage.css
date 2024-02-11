@@ -52,8 +52,8 @@ select {
 button[type="submit"] {
     font-size: 24px;
     width: 100%;
-    background-color: #4CAF50;
-    color: white;
+    background-color: #4caf4fca;
+    color: rgb(0, 0, 0);
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
@@ -62,21 +62,38 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #2d7b31;
+    background-color: #235e26;
 }
 
-#prediction-result {
+
+.result-loyal {
     font-size: 24px; /* Makes the font larger */
     font-weight: bold; /* Makes the font bolder */
-    color: #31708f; /* Sets a specific color */
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
     padding: 20px; /* Adds space around the text */
     margin-top: 20px; /* Adds space above the element */
-    background-color: #aeefc0; /* Sets a background color */
-    border: 1px solid #41634e; /* Adds a border around the element */
+    border: 1px solid #070707; /* Adds a border around the element */
     border-radius: 4px; /* Rounds the corners of the border */
     text-align: center; /* Centers the text inside */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
 }
+
+
+.result-not-loyal {
+    font-size: 24px; /* Makes the font larger */
+    font-weight: bold; /* Makes the font bolder */
+    background-color: #ff4757; /* Red background */
+    color: white; /* White text */
+    padding: 20px; /* Adds space around the text */
+    margin-top: 20px; /* Adds space above the element */
+    border: 1px solid #070707; /* Adds a border around the element */
+    border-radius: 4px; /* Rounds the corners of the border */
+    text-align: center; /* Centers the text inside */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+}
+
+
 
 /* Styles for sticky header */
 .sticky-header {
