@@ -50,6 +50,7 @@ select {
 }
 
 button[type="submit"] {
+    font-size: 24px;
     width: 100%;
     background-color: #4CAF50;
     color: white;
@@ -65,7 +66,70 @@ button[type="submit"]:hover {
 }
 
 #prediction-result {
-    border: 1px solid #ccc;
-    padding: 10px;
-    background-color: white;
+    font-size: 24px; /* Makes the font larger */
+    font-weight: bold; /* Makes the font bolder */
+    color: #31708f; /* Sets a specific color */
+    padding: 20px; /* Adds space around the text */
+    margin-top: 20px; /* Adds space above the element */
+    background-color: #aeefc0; /* Sets a background color */
+    border: 1px solid #41634e; /* Adds a border around the element */
+    border-radius: 4px; /* Rounds the corners of the border */
+    text-align: center; /* Centers the text inside */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+}
+
+/* Styles for sticky header */
+.sticky-header {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 0; /* Set to 0 to stick to the top of the page */
+    background-color: #fff; /* Change as needed */
+    z-index: 1000; /* Ensure it stays on top of other content */
+    border-bottom: 1px solid #eee; /* Optional: adds a line below the header */
+}
+
+
+
+/* New styles for input summary */
+
+.input-summary {
+    background-color: #f0f4f8; /* Lighter background for the summary */
+    border-radius: 8px; /* Rounded corners */
+    border: 1px solid #d1d5db; /* Light border */
+    padding: 20px; /* Padding inside the summary box */
+    margin-top: 20px; /* Margin from the form or any content above */
+}
+.input-summary h4 {
+    font-size: 24px;
+    margin-bottom: 15px; /* Space below the title */
+    color: #4a5568; /* Darker grey for the title */
+}
+.input-summary p {
+    font-size: 18px;
+    color: #2d3748; /* Even darker grey for the text */
+    line-height: 1.5; /* More readable line height */
+}
+
+
+
+/* Styles for the "Clear Results" Button */
+#clear-button {
+    font-size: 16px; /* Adjusts the font size */
+    background-color: #ffe047; /* Sets the background color */
+    color: rgb(0, 0, 0); /* Text color */
+    padding: 10px 20px; /* Top and Bottom, Left and Right padding */
+    border: none; /* Removes the border */
+    border-radius: 5px; /* Rounds the corners */
+    cursor: pointer; /* Changes the cursor to a pointer */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+    outline: none; /* Removes the outline */
+    margin-top: 20px; /* Adds space above the button */
+}
+
+#clear-button:hover {
+    background-color: #e3b958; /* Lighter shade for hover state */
+}
+
+#clear-button:focus {
+    outline: none; /* Ensures the outline doesn't appear when focused (for accessibility, consider a different focus style) */
 }

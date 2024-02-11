@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Welcome to Customer Churn Project</title>
+    <!-- <title>Welcome to Customer Churn Project</title> -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-homepage.css') }}">
     <style>
         /* Adjust the width of form elements to 33% */
@@ -14,23 +14,6 @@
             margin-right: 0;
         }
 
-        /* New styles for input summary */
-        
-        .input-summary {
-            background-color: #f0f4f8; /* Lighter background for the summary */
-            border-radius: 8px; /* Rounded corners */
-            border: 1px solid #d1d5db; /* Light border */
-            padding: 20px; /* Padding inside the summary box */
-            margin-top: 20px; /* Margin from the form or any content above */
-        }
-        .input-summary h4 {
-            margin-bottom: 15px; /* Space below the title */
-            color: #4a5568; /* Darker grey for the title */
-        }
-        .input-summary p {
-            color: #2d3748; /* Even darker grey for the text */
-            line-height: 1.5; /* More readable line height */
-        }
         
             
     </style>
@@ -42,9 +25,11 @@
     
 </head>
 <body>
-    <header>
-        <h1>Welcome to Customer Churn Project</h1>
-    </header>
+    <div class="sticky-header">
+        <header>
+            <h1>Welcome to Customer Churn Project</h1>
+        </header>
+    </div>
 
     <section>
         <h2>Explore Customer Churn Analysis</h2>
@@ -130,15 +115,23 @@
         </form>
         <!-- Display prediction result here -->
         <div id="prediction-result" style="margin-top: 20px;">{{prediction_text}}</div>
-        <!-- <div id="input-summary" style="margin-top: 20px;">{{input_summary}}</div> -->
+
         <!-- Display input summary here -->
-        <div class="input-summary">
+        <div class="input-summary" id="input-summary">
             <h4>Input Summary</h4>
-            <p>{{input_summary|safe}}</p>
+            <p id="summary-content">{{input_summary|safe}}</p>
         </div>
+
+        <!-- Clear Button -->
+        <button id="clear-button">Clear Results</button>
+
+        <script src="{{ url_for('static', filename='js/clearContent.js') }}"></script>
+
+
+
+
 
     </section>
 
-    <!-- <script src="{{ url_for('static', filename='js/data-processing.js') }}"></script> -->
 </body>
 </html>
