@@ -14,7 +14,7 @@
 4. [Final Repository Structure](#final-repository-structure)
 5. [Bank churn data Overview](#crime-dataset-overview)
 6. [Target Audience](#target-audience)
-7. [Interactive Visualisations](#interactive-visualisations)
+7. [Visualisations](#visualisations)
 8. [Launch](#launch)
 9. [App Server Setup](#app-server-setup)
 
