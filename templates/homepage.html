@@ -13,11 +13,33 @@
         .input-group:last-child {
             margin-right: 0;
         }
+
+        /* New styles for input summary */
+        
+        .input-summary {
+            background-color: #f0f4f8; /* Lighter background for the summary */
+            border-radius: 8px; /* Rounded corners */
+            border: 1px solid #d1d5db; /* Light border */
+            padding: 20px; /* Padding inside the summary box */
+            margin-top: 20px; /* Margin from the form or any content above */
+        }
+        .input-summary h4 {
+            margin-bottom: 15px; /* Space below the title */
+            color: #4a5568; /* Darker grey for the title */
+        }
+        .input-summary p {
+            color: #2d3748; /* Even darker grey for the text */
+            line-height: 1.5; /* More readable line height */
+        }
+        
+            
     </style>
     <!-- Plotly.js for Chart Visualizations -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <!-- D3.js for Data Loading and Processing -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    
 </head>
 <body>
     <header>
@@ -108,6 +130,13 @@
         </form>
         <!-- Display prediction result here -->
         <div id="prediction-result" style="margin-top: 20px;">{{prediction_text}}</div>
+        <!-- <div id="input-summary" style="margin-top: 20px;">{{input_summary}}</div> -->
+        <!-- Display input summary here -->
+        <div class="input-summary">
+            <h4>Input Summary</h4>
+            <p>{{input_summary|safe}}</p>
+        </div>
+
     </section>
 
     <!-- <script src="{{ url_for('static', filename='js/data-processing.js') }}"></script> -->

@@ -136,9 +136,17 @@ def predict():
     
     result = 'Loyal' if prediction[0] == 0 else 'Exited'
     print(result)
-    # Return result to the same page or to a new prediction result page
-    return render_template('homepage.html', prediction_text=f'Customer Loyalty Status: {result}')
 
+
+     # Prepare a summary of the inputs
+    input_summary = f"Credit Score: {CreditScore}, Age: {Age}, Tenure: {Tenure}, Balance: {Balance}, " \
+                    f"Number of Products: {NumOfProducts}, Has Credit Card: {'Yes' if HasCrCard == 1 else 'No'}, " \
+                    f"Active Member: {'Yes' if IsActiveMember == 1 else 'No'}, Estimated Salary: {EstimatedSalary}, " \
+                    f"Gender: {gender}, Geography: {geography}"
+
+    # Return result to the same page or to a new prediction result page
+        # Include the summary in the context
+    return render_template('homepage.html', prediction_text=f'Customer Loyalty Status: {result}', input_summary=input_summary)
 
 
 ############# Route #2 (Interactive Dashboard) ###############
