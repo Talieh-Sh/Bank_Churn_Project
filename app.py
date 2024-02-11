@@ -102,16 +102,16 @@ def homepage():
 @app.route("/predict", methods=["GET"])
 def predict():
     # Extracting data from the form submission
-    CreditScore =141 #request.args.get('credit_score', type=float)
-    Age = 44#request.args.get('age', type=float)
-    Tenure = 4# request.args.get('tenure', type=float)
-    Balance = 4741#request.args.get('balance', type=float)
-    NumOfProducts =2# request.args.get('num_of_products', type=int)
-    HasCrCard = 1#request.args.get('hascrcard', type=int)  # Assuming this is part of the form submission
-    IsActiveMember =1# request.args.get('isactivemember', type=int)  # Assuming this is part of the form submission
-    EstimatedSalary =343443# request.args.get('estimated_salary', type=float)
-    gender ='Male' #request.args.get('gender')
-    geography ='France'# request.args.get('geography')
+    CreditScore =request.args.get('credit_score', type=float)
+    Age = request.args.get('age', type=float)
+    Tenure = request.args.get('tenure', type=float)
+    Balance = request.args.get('balance', type=float)
+    NumOfProducts = request.args.get('num_of_products', type=int)
+    HasCrCard = request.args.get('hascrcard', type=int)  # Assuming this is part of the form submission
+    IsActiveMember = request.args.get('isactivemember', type=int)  # Assuming this is part of the form submission
+    EstimatedSalary = request.args.get('estimated_salary', type=float)
+    gender = request.args.get('gender')
+    geography = request.args.get('geography')
 
     # Gender binary encoding
     Is_Male = 1 if gender == 'Male' else 0
