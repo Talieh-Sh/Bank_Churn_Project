@@ -50,9 +50,10 @@ select {
 }
 
 button[type="submit"] {
+    font-size: 24px;
     width: 100%;
-    background-color: #4CAF50;
-    color: white;
+    background-color: #4caf4fca;
+    color: rgb(0, 0, 0);
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
@@ -61,11 +62,100 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #235e26;
 }
 
-#prediction-result {
-    border: 1px solid #ccc;
-    padding: 10px;
-    background-color: white;
+
+.result-loyal {
+    font-size: 24px; /* Makes the font larger */
+    font-weight: bold; /* Makes the font bolder */
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 20px; /* Adds space around the text */
+    margin-top: 20px; /* Adds space above the element */
+    border: 1px solid #070707; /* Adds a border around the element */
+    border-radius: 4px; /* Rounds the corners of the border */
+    text-align: center; /* Centers the text inside */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+}
+
+
+.result-not-loyal {
+    font-size: 24px; /* Makes the font larger */
+    font-weight: bold; /* Makes the font bolder */
+    background-color: #ff4757; /* Red background */
+    color: white; /* White text */
+    padding: 20px; /* Adds space around the text */
+    margin-top: 20px; /* Adds space above the element */
+    border: 1px solid #070707; /* Adds a border around the element */
+    border-radius: 4px; /* Rounds the corners of the border */
+    text-align: center; /* Centers the text inside */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+}
+
+
+
+/* Styles for sticky header */
+.sticky-header {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 0; /* Set to 0 to stick to the top of the page */
+    background-color: #fff; /* Change as needed */
+    z-index: 1000; /* Ensure it stays on top of other content */
+    border-bottom: 1px solid #eee; /* Optional: adds a line below the header */
+}
+
+
+
+/* New styles for input summary */
+.input-summary {
+    background-color: #f9f9f9; /* Light background color for contrast */
+    border-radius: 10px; /* Rounded corners for a modern look */
+    border: 1px solid #dcdcdc; /* Subtle border */
+    padding: 20px; /* Padding around the content */
+    margin-top: 20px; /* Margin from the content above */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+.input-summary h4 {
+    margin-top: 0;
+    color: #333; /* Dark color for the title */
+    font-size: 20px; /* Slightly larger font size for the title */
+}
+
+#summary-content {
+    white-space: pre-wrap; /* Allows text to wrap */
+    word-wrap: break-word; /* Ensures long words do not overflow */
+    background-color: #ffffff; /* White background for the pre content */
+    border: 1px solid #eeeeee; /* Light border for the pre content */
+    border-radius: 8px; /* Rounded corners for the pre content */
+    padding: 15px; /* Padding inside the pre content */
+    color: #555; /* Dark grey color for text */
+    font-family: inherit;
+    font-size: 16px; /* Adjust font size for readability */
+    overflow-x: auto; /* Adds a horizontal scrollbar if content overflows */
+    margin-top: 10px; /* Space between the title and the pre content */
+}
+
+
+/* Styles for the "Clear Results" Button */
+#clear-button {
+    font-size: 16px; /* Adjusts the font size */
+    background-color: #ffe047; /* Sets the background color */
+    color: rgb(0, 0, 0); /* Text color */
+    padding: 10px 20px; /* Top and Bottom, Left and Right padding */
+    border: none; /* Removes the border */
+    border-radius: 5px; /* Rounds the corners */
+    cursor: pointer; /* Changes the cursor to a pointer */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+    outline: none; /* Removes the outline */
+    margin-top: 20px; /* Adds space above the button */
+}
+
+#clear-button:hover {
+    background-color: #e3b958; /* Lighter shade for hover state */
+}
+
+#clear-button:focus {
+    outline: none; /* Ensures the outline doesn't appear when focused (for accessibility, consider a different focus style) */
 }

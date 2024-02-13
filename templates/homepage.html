@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Welcome to Customer Churn Project</title>
+    <!-- <title>Welcome to Customer Churn Project</title> -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style-homepage.css') }}">
     <style>
         /* Adjust the width of form elements to 33% */
@@ -13,16 +13,23 @@
         .input-group:last-child {
             margin-right: 0;
         }
+
+        
+            
     </style>
     <!-- Plotly.js for Chart Visualizations -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <!-- D3.js for Data Loading and Processing -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    
 </head>
 <body>
-    <header>
-        <h1>Welcome to Customer Churn Project</h1>
-    </header>
+    <div class="sticky-header">
+        <header>
+            <h1>Welcome to Customer Churn Project</h1>
+        </header>
+    </div>
 
     <section>
         <h2>Explore Customer Churn Analysis</h2>
@@ -50,7 +57,7 @@
         <p>
             In this intriguing section, you hold the key to customer loyalty. Input customer data below, and our advanced machine learning process will reveal whether they'll stay or go.
         </p>
-        <form id="loyalty-form">
+        <form id="loyalty-form" method="GET" action="/predict">
             <div class="input-group">
                 <label for="credit_score">Credit Score:</label>
                 <input type="number" id="credit_score" name="credit_score" required>
@@ -90,12 +97,45 @@
                     <option value="Female">Female</option>
                 </select>
             </div>
+            <div class="input-group">
+                <label for="hascrcard">Credit Card:</label>
+                <select id="hascrcard" name="hascrcard" required>
+                    <option value="1">Has Creadit Card</option>
+                    <option value="0">No Credit Card</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="isactivemember">Active Member?</label>
+                <select id="isactivemember" name="isactivemember" required>
+                    <option value="1">Active Member</option>
+                    <option value="0">Not Active Member</option>
+                </select>
+            </div>
             <button type="submit">Check Loyalty</button>
         </form>
         <!-- Display prediction result here -->
-        <div id="prediction-result" style="margin-top: 20px;"></div>
+        <div id="prediction-result" class="{{ 'result-loyal' if result_status == 'loyal' else 'result-not-loyal' }}" style="margin-top: 20px;">
+            {{prediction_text}}
+        </div>
+
+
+        <!-- Display input summary here -->
+        <div class="input-summary" id="input-summary">
+        
+            <h4>Input Summary</h4>
+            <pre id="summary-content">{{ input_summary|safe }}</pre>
+        </div>
+
+        <!-- Clear Button -->
+        <button id="clear-button">Clear Results</button>
+
+        <script src="{{ url_for('static', filename='js/clearContent.js') }}"></script>
+
+
+
+
+
     </section>
 
-    <!-- <script src="{{ url_for('static', filename='js/data-processing.js') }}"></script> -->
 </body>
 </html>
