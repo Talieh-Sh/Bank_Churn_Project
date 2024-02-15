@@ -31,7 +31,7 @@ else:
 
 # Use the password in your URL
 url = f"postgresql://talish_68:{db_password}@ep-ancient-hat-a1q8jw52.ap-southeast-1.aws.neon.tech/Bank_Churn?sslmode=require"
-
+print(url)
 # Create connection to the Neon PostgreSQL database
 engine = create_engine(url)
 
@@ -53,6 +53,7 @@ churn_data = Base.classes.churn_data
 #################################################
 # Assuming your model is named 'model.sav'
 model_path = 'regression_model'
+#model_path = 'randomforest_model'
 model = load(model_path)
 
 #################################################
