@@ -1,0 +1,14 @@
+1,Feature Importances
+NumOfProducts,0.18501973
+IsActiveMember,0.17249173
+Is_Female,0.16739485
+Is_Germany,0.12798415
+Is_Spain,0.097260535
+Is_Male,0.07494858
+Age,0.065241516
+Is_France,0.047150515
+HasCrCard,0.031222412
+Balance,0.0198154
+Tenure,0.007298755
+CreditScore,0.0021950135
+EstimatedSalary,0.001976807
