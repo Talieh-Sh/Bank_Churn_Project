@@ -101,7 +101,28 @@ The bank churn prediction project aims to utilize machine learning techniques to
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Visualisation
 
-
+## Interactive Visualisations
+### ** Interactive Tableau Dashboard**
+This Tableau Dashboard contains:
+1)      An interactive histogram that shows the distribution of account balance of the dataset, as well as an interactive area chart that shows the Churn distribution across age range. The visualisations can be altered by clicking the slicer buttons to filter based on which country the user wants to see distribution for:
+<p align="center">
+  <img src="./Images/Histogramcountries.gif" width="70%">
+</p>
+This histogram and area chart can also be filtered based on whether the customer from the dataset ‘churned’ (left the bank), or didn’t churn:
+<p align="center">
+  <img src="./Images/Histogramexitnonexit.gif" width="70%">
+</p>
+Additionally, the histogram and area chart can be filtered on whether the customer had a credit card with the bank or not.
+<p align="center">
+  <img src="./Images/Histogramcc.gif" width="70%">
+</p>
+Whenever these filters are used, the dashboard updates to show the churn rate of the selected portion of the dataset
+ 
+2)      Interactive bar charts that show the significance of gender, credit card ownership and active membership versus customer loyalty. These bar charts can also be filtered based on the country selected:
+<p align="center">
+  <img src="./Images/Barchartcountries.gif" width="70%">
+</p>
+ 
 
 
 
