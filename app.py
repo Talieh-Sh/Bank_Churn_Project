@@ -19,15 +19,27 @@ import numpy as np
 # SQLAlchemy Database Setup
 #################################################
 
-# Check if the "dbpassword.txt" file exists
-if os.path.isfile("dbpassword.txt"):
-    # Read the database password from the external file
-    with open("dbpassword.txt", "r") as password_file:
-        db_password = password_file.read().strip()
-else:
-    # Provide guidance when the file is not found
-    print("The 'dbpassword.txt' file was not found. Please create the file and add your database password to it.")
-    exit()
+#####
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Now you can access the variables using os.environ
+db_password = os.environ.get("database_password")
+
+
+
+# # Check if the "dbpassword.txt" file exists
+# if os.path.isfile("dbpassword.txt"):
+#     # Read the database password from the external file
+#     with open("dbpassword.txt", "r") as password_file:
+#         db_password = password_file.read().strip()
+# else:
+#     # Provide guidance when the file is not found
+#     print("The 'dbpassword.txt' file was not found. Please create the file and add your database password to it.")
+#     exit()
 
 # Use the password in your URL
 url = f"postgresql://talish_68:{db_password}@ep-ancient-hat-a1q8jw52.ap-southeast-1.aws.neon.tech/Bank_Churn?sslmode=require"
@@ -74,7 +86,10 @@ def homepage():
     # Serve the homepage HTML webpage (homepage.html)
     return render_template("homepage.html")
 
-
+############# Add visualization Route ###############
+@app.route("/visualization")
+def visualization():
+    return render_template("visualization.html")
 
 ############# Add Route for Handling Form Submission - Machine Learning Model ###############
 @app.route("/predict", methods=["GET"])
@@ -185,7 +200,7 @@ def sample_data():
 
 # Run the Flask app
 if __name__ == '__main__':
-    app.run(debug=True, host='localhost', port=9091)
+    app.run(debug=True, host='localhost', port=9092)
 
 
 
