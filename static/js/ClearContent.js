@@ -5,5 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Clear the "Input Summary"
         document.getElementById('summary-content').innerHTML = '';
+        result_status=
     });
 });

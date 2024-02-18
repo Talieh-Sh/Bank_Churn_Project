@@ -115,7 +115,8 @@
             <button type="submit">Check Loyalty</button>
         </form>
         <!-- Display prediction result here -->
-        <div id="prediction-result" class="{{ 'result-loyal' if result_status == 'loyal' else 'result-not-loyal' }}" style="margin-top: 20px;">
+        <div id="prediction-result"  class="{{ 'result-loyal' if result_status == 'loyal' else 'result-not-loyal' if result_status else 'result-not-ready' }}"
+        style="margin-top: 20px;">
             {{prediction_text}}
         </div>
 

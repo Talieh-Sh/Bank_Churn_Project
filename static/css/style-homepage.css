@@ -51,18 +51,19 @@ select {
 
 button[type="submit"] {
     font-size: 24px;
+    border: 1px solid black; /* Adds a border around the element */
     width: 100%;
-    background-color: #4caf4fca;
+    background-color: #017bff; 
     color: rgb(0, 0, 0);
     padding: 14px 20px;
     margin: 8px 0;
-    border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
 button[type="submit"]:hover {
-    background-color: #235e26;
+    background-color: #2860c9;
+  
 }
 
 
@@ -73,7 +74,6 @@ button[type="submit"]:hover {
     color: white; /* White text */
     padding: 20px; /* Adds space around the text */
     margin-top: 20px; /* Adds space above the element */
-    border: 1px solid #070707; /* Adds a border around the element */
     border-radius: 4px; /* Rounds the corners of the border */
     text-align: center; /* Centers the text inside */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
@@ -87,7 +87,21 @@ button[type="submit"]:hover {
     color: white; /* White text */
     padding: 20px; /* Adds space around the text */
     margin-top: 20px; /* Adds space above the element */
-    border: 1px solid #070707; /* Adds a border around the element */
+  
+    border-radius: 4px; /* Rounds the corners of the border */
+    text-align: center; /* Centers the text inside */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+}
+
+
+.result-not-ready {
+    font-size: 24px; /* Makes the font larger */
+    font-weight: bold; /* Makes the font bolder */
+    background-color: white; /* Red background */
+    color: black; /* White text */
+    padding: 20px; /* Adds space around the text */
+    margin-top: 20px; /* Adds space above the element */
+    
     border-radius: 4px; /* Rounds the corners of the border */
     text-align: center; /* Centers the text inside */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
