@@ -93,7 +93,7 @@ def visualization():
 
 ############# Add ML results Route ###############
 @app.route("/ml-process")
-def visualization():
+def ml_process():
     return render_template("ml_model.html")
 
 ############# Add Route for Handling Form Submission - Machine Learning Model ###############
