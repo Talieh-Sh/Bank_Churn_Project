@@ -69,8 +69,8 @@ The bank churn prediction project aims to utilize machine learning techniques to
   - XGBoost model
   - Explanation of models used/summary of results
 * **Simon**
-  -
-
+  - Neural Network Model
+  - Data class imbalance research
 
 ## Final Repository Structure
 ```
