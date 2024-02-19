@@ -91,6 +91,11 @@ def homepage():
 def visualization():
     return render_template("visualization.html")
 
+############# Add ML results Route ###############
+@app.route("/ml-process")
+def visualization():
+    return render_template("ml_model.html")
+
 ############# Add Route for Handling Form Submission - Machine Learning Model ###############
 @app.route("/predict", methods=["GET"])
 def predict():
