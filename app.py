@@ -64,7 +64,7 @@ churn_data = Base.classes.churn_data
 #Loading Machine learning model
 #################################################
 # Assuming your model is named 'model.sav'
-model_path = 'regression_model'
+model_path = 'XGBoost_model'
 #model_path = 'randomforest_model'
 model = load(model_path)
 
