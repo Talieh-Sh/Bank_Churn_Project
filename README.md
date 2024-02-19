@@ -1,4 +1,4 @@
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+             --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # **Bank Churn Analysis and Prediction using Machine Learning Techniques**
 
 <p align="center">
@@ -23,7 +23,7 @@ The bank churn prediction project aims to utilize machine learning techniques to
 
 ### The project encompasses several key components:
 
-1. **Data Preparation:** The dataset containing relevant features such as credit score, age, tenure, balance, and more was obtained and cleaned using Python. The cleaned data was then stored in a PostgreSQL database on Neon cloud services.
+1. **Data Preparation:** The dataset containing relevant features such as credit score, age, tenure, balance, and more was obtained and cleaned using Python. The cleaned data was then stored in a PostgreSQL database on Neon Cloud services.
 
 2. **Machine Learning Model:** Various machine learning models, including Logistic Regression, Random Forest, XGBoost, and Neural Network, were trained and evaluated using the dataset. Metrics such as accuracy were used to compare the models, and the best-performing model was selected for deployment.
 
@@ -33,7 +33,9 @@ The bank churn prediction project aims to utilize machine learning techniques to
 
 5. **API Endpoint:** An API endpoint was implemented to allow access to sample data from the Bank Churn database, facilitating further analysis or integration with other systems.
    
-6. **Deployment to the cloud:** Used Docker for encapsulating the application with all its dependencies into a uniformed package. This package was then deployed to the cloud through fly.io, serving as the hosting platform, ensuring the application's availability online.
+6. **Deployment to the cloud:** Used Docker for encapsulating the application with all its dependencies into a uniform package. This package was then deployed to the cloud through fly.io, serving as the hosting platform, and ensuring the application's availability online.
+
+   
 ### Technologies used
 
 - [Tensorflow](https://www.tensorflow.org/api_docs/python/tf)
