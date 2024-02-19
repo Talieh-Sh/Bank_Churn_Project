@@ -101,5 +101,32 @@
 	</ul>
 	<p>Classification report states that precision and recall gave a high score for 0 (clients that stayed) and better performance for 1 (clients that leave).  However to improve the accuracy of the model, having a larger dataset and exploring creative techniques might improve results.</p>
 
+	<p></p>
+	<h1>Neural Network Model</h1>
+    <p>We attempted to use the computing and learning capabilities of a Neural Network model</p>
+	<p>Using tuner, we allowed the computer power to optimise the layers and it found the below the be the most optimum layers.</p>
+	<p>SMOTE was used to help with class and feature imbalances</p>
+	<h2>Model Training and Results<h2></h2>
+	<p><b>Optimum Layers</b>:{'activation': 'relu', 'first_units': 26, 'num_layers': 4, 'units_0': 26, 'units_1': 21, 'units_2': 21, 'units_3': 11, 'units_4': 11, 'tuner/epochs': 20, 'tuner/initial_epoch': 7, 'tuner/bracket': 1, 'tuner/round': 1, 'tuner/trial_id': '0018'}</p>
+	<p>The model gave a accuracy score of: 0.8606044815007816</p>
+	<p>Below are the results of Confusion Matrix</p>
+    <img src="static/img/nn_confusion_matrix.png">
+	<h2>Findings</h2>
+    <p>While we initially believe that the Neural Network model would give us the best result, XGBoost was a better fit.</p>
+	<p>This is likely due to a number of factors such as:</p>
+	<ul>
+        <li>XGBoost being known for its high predictive accuracy within the banking sector</li>
+        <li>Ability to handle imbalanced data</li>
+		<li>Interpretability, while powerful, Neural Network models do not give insight into feature important. This is highly desirable particularly in the finance and other service based insutries</li>
+	</ul>
+
+	<h1>SMOTE (Synthetic Minority Over-sampling Technique)</h1>
+	<p>A techinque that helps correct class imbalances by creating synthetic samples for the minority class, SMOTE aims to balance the class distribution, making the minority class more represented in the dataset.</p>
+	<p>SMOTE does this by the following:</p>
+	<ul>
+        <li>Identify Minority Class: First, you identify the minority class in your dataset. This is the class that has fewer samples compared to the majority class.</li>
+        <li>Identify Nearest Neighbors: For each sample in the minority class, SMOTE identifies its k nearest neighbors in the feature space.</li>
+		<li>Generate Synthetic Samples: SMOTE then creates synthetic samples by interpolating between the minority class sample and its nearest neighbors. For each minority class sample, SMOTE randomly selects one or more of its nearest neighbors and creates a new sample along the line connecting the sample and its neighbors. The synthetic samples are generated within the feature space of the minority class.</li>
+	</ul>
 </body>
 </html>
