@@ -32,7 +32,8 @@ The bank churn prediction project aims to utilize machine learning techniques to
 4. **Visualization:** Tableau was utilized for data visualization to analyze patterns and trends within the dataset, providing valuable insights for model training and interpretation.
 
 5. **API Endpoint:** An API endpoint was implemented to allow access to sample data from the Bank Churn database, facilitating further analysis or integration with other systems.
-
+   
+6. **Deployment to the cloud:** Used Docker for encapsulating the application with all its dependencies into a uniformed package. This package was then deployed to the cloud through fly.io, serving as the hosting platform, ensuring the application's availability online.
 ### Technologies used
 
 - [Tensorflow](https://www.tensorflow.org/api_docs/python/tf)
@@ -40,6 +41,8 @@ The bank churn prediction project aims to utilize machine learning techniques to
 - [RandomForest](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)
 - [XGBoost](https://xgboost.readthedocs.io/en/stable/)
 - [Regression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html)
+- [Docker](https://docs.docker.com/)
+- 
 ## Analytics Dashboard (Preview)
 
 
