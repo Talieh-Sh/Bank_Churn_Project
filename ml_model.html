@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Model Findings</title>
+</head>
+<body>
+    <h1>Regression Model</h1>
+    <p>Our first attempt at creating a model in our data was using the Logistic Regression model.  
+	Using the data, we used the Exited features as our target variable to predict whether a customer will leave or stay.</p>
+	
+	<p>First we had to clean the data and format the data to fit the model.</p>
+
+    <h2>Data Cleaning</h2>
+    <p>Our first step of cleaning the data was removing any n/a values and standardising variables by converting them into binary</p>
+	<p>Variables such as: Gender, Geography were standardised by separate columns and populated using binary fields</p>
+
+    <h2>Model Training and Results<h2>
+    <p>We trained the model using the clean dataset and with the following classifier:</p>
+	<ul>
+        <li>max iterations: 200</li>
+        <li>random state: 1</li>
+	</ul>
+    <p>The model gave a accuracy score of: 0.7851620252550958</p>
+	<p>Below are the results of Confusion Matrix and Classification Report</p>
+    <img src="static/img/regression_confusion_matrix.png">
+	<p></p>
+	<img src="static/img/regression_classreport.png">
+	<p></p>
+	<img src="static/img/regression_feature_importance.png">
+    <h2>Findings</h2>
+    <p>According to the results, Accuracy was not a very high level.  Exploring different models more suited for this type of dataset might yield better results.</p>
+	<p>Classification report states that precision and recall gave a high score for 0 (clients that stayed) but poor performance for 1 (clients that leave).  The confusion matrix also highlighted similar results, showing that there are higher ratio of false positives for 1 (clients that leave) than 0 (clients that stay)</p>
+	
+	<h1>Random Forest Model</h1>
+    <p>Our second attempt at creating a model in our data was using the Random Forest model.  Random Forest is widely used in the industry to calculate customer rentention/churn because of its handing of feature importance and non-linear data</p>
+	<p>The ease of tune of the model also helped create a more accurate result.</p>
+	
+	<p>First we had to clean the data and format the data to fit the model.</p>
+
+    <h2>Data Cleaning</h2>
+    <p>As per our first attempt, we cleaned the data using the methods in our previous model</p>
+	<p>Variables such as: Gender, Geography were standardised by separate columns and populated using binary fields</p>
+	<p>During our training of the data, we found some features less important and experimented with cleaning the data further, by exluding less important features</p>
+	
+    <h2>Model Training and Results<h2>
+    <p>We also included the Standard Scaler method to smooth our our test and training data, hoping to get a better accuracy score.</p>
+	<p>We used the below Classifier parameters for the model:</p>
+	<ul>
+        <li>n_estimators: 25</li>
+        <li>random state: 78</li>
+	</ul>
+    <p>The model gave a accuracy score of: 0.8562980198259773</p>
+	<p>Below are the results of Confusion Matrix and Classification Report</p>
+    <img src="static/img/rf_confusion_matrix.png">
+	<p></p>
+	<img src="static/img/rf_classreport.png">
+	<p></p>
+	<img src="static/img/rf_feature_importance.png">
+    <h2>Findings</h2>
+    <p>According to the results, Accuracy at higher level. Favoured by the industry, random forest model for this type of dataset significantly improved accuracy.  It is also telling that certain features are weighted heavier than others such as age and Estimated Salary</p>
+	<p>Classification report states that precision and recall gave a high score for 0 (clients that stayed) but poor performance for 1 (clients that leave).  The confusion matrix also highlighted similar results, showing that there are closer ratio of false positives for 1 (clients that leave) than 0 (clients that stay).  However to improve the accuracy of the model we also tried another model, XGBoost</p>
+	
+	<p></p>
+	<h1>XGBoost Model</h1>
+    <p>Our third attempt at creating a model in our data was using the XGBoost model.  Ensemble learning by using multiple learning algorithms such as decision trees to help improve the performance</p>
+	<p>Gradient boosting to minimise loss in learning model - adjust performance model based on errors made</p>
+	<p>Also taking advantage of SMOTE and recommended hyperparameters makes this model efficient to use and train</p>
+	
+	<p>First we had to clean the data and format the data to fit the model.</p>
+
+    <h2>Data Cleaning</h2>
+    <p>As per our first and second attempt, we cleaned the data using the methods in our previous model</p>
+	<p>Variables such as: Gender, Geography were standardised by separate columns and populated using binary fields</p>
+	<p>During our training of the data, we found some features less important and experimented with cleaning the data further, by exluding less important features</p>
+	
+    <h2>Model Training and Results<h2>
+    <p>We also included the Standard Scaler method to smooth our our test and training data, hoping to get a better accuracy score.</p>
+	<p>We used the below hyperparameters for the model:</p>
+	<ul>
+        <li>learning rate: 0.1</li>
+        <li>n_estimators: 100</li>
+		<li>max_depth: 5</li>
+	</ul>
+    <p>The model gave a accuracy score of: 0.8672705789680977</p>
+	<p>Below are the results of Confusion Matrix and Classification Report</p>
+    <img src="static/img/xgboost_confusion_matrix.png">
+	<p></p>
+	<img src="static/img/xgboost_classreport.png">
+	<p></p>
+	<img src="static/img/xgboost_feature_importance.png">
+    <h2>Findings</h2>
+    <p>According to the results, accuracy has been the best out of the other models. Using the SMOTE techinque, it improved the confusion matrix by predicting better 1 (clients that leave) while keeping 0 also pretty accurate</p>
+	<p>We recommend using XGBoost model because:</p>
+	<ul>
+        <li>Improved Accuracy</li>
+        <li>Ensemble Learning</li>
+		<li>Non-Linear relationships</li>
+		<li>Over fitting using SMOTE</li>
+	</ul>
+	<p>Classification report states that precision and recall gave a high score for 0 (clients that stayed) and better performance for 1 (clients that leave).  However to improve the accuracy of the model, having a larger dataset and exploring creative techniques might improve results.</p>
+
+</body>
+</html>
