@@ -64,7 +64,10 @@ The bank churn prediction project aims to utilize machine learning techniques to
      - [Docker] Created docker files to facilitate running the application on cloud.
      - 
 * **Michael**
-  -
+  - Regression Model
+  - Random Forest Model
+  - XGBoost model
+  - Explanation of models used/summary of results
 * **Simon**
   -
 
