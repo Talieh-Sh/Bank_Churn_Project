@@ -165,10 +165,36 @@ Whenever these filters are used, the dashboard updates to show the churn rate of
 ---
 
 ## Launch
+There is no need for installation to view this project. Everything is hosted online thanks to Fli.io.
 
+The link to the interactive dashboard is available on the repo's description. Otherwise, you can click this link [here](https://bankchurnproject.fly.dev/) to access it.
 
+This repo also contains the necessary files to run the visualization and database locally. Installation is necessary to host the visualization through localhost.
 
 
 ---
 
 ## App Server Setup 
+
++ Add DB Password  
+    You need to create dbpassword.txt in the project working directory and paste your database password there.  
+    Note: make sure to NOT commit this file to Git.
++ (Once Only) Add New Virtual Environment
+    * Open a new terminal and change directory to project working directory
+    * Run below command in your project working directory  
+      * On macOS and Linux:  
+       ``` python3 -m venv .venv```
+      * On Windows:   
+       ``` python -m venv .venv```
++ Activate the virtual environment  
+    * Run below command in your project working directory
+      * On macOS and Linux:  
+       ``` source .venv/bin/activate```
+      * On Windows:   
+      ``` .venv\Scripts\activate```
+    * Verify Python is correctly configured.
+      Run below command, it should shows path to your .venv directory
+      ``` which python```  
++ Install Required Python Packages 
+    * Run below command in your project working directory  
+    ``` pip install -r requirements.txt```
