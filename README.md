@@ -76,16 +76,31 @@ The bank churn prediction project aims to utilize machine learning techniques to
 ```
 ├── README.md
 ├── .gitignore
-├── app.py
-├── 'templates' Folder
-├── 'static' Folder
-├── 
+├── .venv
 ├── 'Images' Folder
-└── '_localhost' Folder
+└── 'Machine learning Models' Folder
+    ├── 'Neural_Networks' Folder
+    ├── 'Random_Forest' Folder
+    ├── 'Regression' Folder
+    └── 'XGBoost' Folder
+└── 'static' Folder
+    ├── 'css' Folder
+    ├── 'data' Folder
+    ├── 'img' Folder
+    └── 'js' Folder
+└── 'templates' Folder
+    ├── homepage.html
     ├── index.html
-    ├── app_local.py
-    ├── 'templates' Folder
-    └── 'static' Folder
+    ├── ml_model.html
+    ├── neural_network_model.html
+    ├── random_forest_model.html
+    ├── regression_model.html
+    ├── visualization.html
+    └── xgboost.html
+├── app.py
+├── requirements.txt
+└── XGBoost_model
+
 ```
 
 
