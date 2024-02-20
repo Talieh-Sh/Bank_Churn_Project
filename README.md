@@ -55,6 +55,8 @@ The bank churn prediction project aims to utilize machine learning techniques to
 * **Rohit**
   -[Jupyter Notebook] Cleaning of original Bank Churn dataset
   -[Tableau] Created initial visualizations for presentation
+  -Assisted with presentation slides and rehearsal 
+  -Support during Group meetings and work sessions
 * **Talieh**
      - [PostgreSQL] Database schema design + setup
      - [Python Flask / SQLAlchemy] Development of Flask to create a web application that can interact with databases, perform computations or predictions, and render results dynamically on a web page.
