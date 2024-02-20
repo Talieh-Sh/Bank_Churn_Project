@@ -61,10 +61,10 @@ The bank churn prediction project aims to utilize machine learning techniques to
      - [PostgreSQL] Database schema design + setup
      - [Python Flask / SQLAlchemy] Development of Flask to create a web application that can interact with databases, perform computations or predictions, and render results dynamically on a web page.
      - [Cloud-Based App Hosting] Migration of entire project solution to fli.io Cloud
-     - [Frontend] Full Web development of Flask Application Landing Page (HTML), visualization page
+     - [Frontend] Full Web development of Flask Application Landing Page (HTML), visualization page, Ml model pages
      - [Tableau] Additional support with creating visualization in Tableau
-     - [Docker] Created docker files to facilitate running the application on cloud.
-     - 
+     - [Docker] Created docker files to facilitate running the application on the cloud.
+       
 * **Michael**
   - Regression Model
   - Random Forest Model
