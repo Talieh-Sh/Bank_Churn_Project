@@ -96,6 +96,31 @@ def visualization():
 def ml_process():
     return render_template("ml_model.html")
 
+############# Add regression_model Route ###############
+@app.route("/regression_model")
+def regression_model():
+    return render_template("regression_model.html")
+
+
+
+############# Add random_forest_model Route ###############
+@app.route("/random_forest_model")
+def random_forest_model():
+    return render_template("random_forest_model.html")
+
+
+
+############# Add xgboost_model Route ###############
+@app.route("/xgboost_model")
+def xgboost_model():
+    return render_template("xgboost_model.html")
+
+
+############# Add neural_network_model Route ###############
+@app.route("/neural_network_model")
+def rneural_network_model():
+    return render_template("neural_network_model.html")
+
 ############# Add Route for Handling Form Submission - Machine Learning Model ###############
 @app.route("/predict", methods=["GET"])
 def predict():
