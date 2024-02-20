@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Network Model Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="content-wrapper">
+        <header>
+            <h1>Neural Network Model Analysis</h1>
+        </header>
+
+        <section id="introduction">
+            <p>The exploration of computational intelligence led us to evaluate a Neural Network model, harnessing its pattern recognition capabilities derived from artificial neurons.</p>
+            <p>Utilizing a tuning process, the most optimum layers for the network were identified, and SMOTE was employed to address class and feature imbalances.</p>
+        </section>
+        
+        <section id="model-training">
+            <h2>Model Training and Results</h2>
+            <p><strong>Optimum Layers Configuration:</strong></p>
+            <pre><code>{'activation': 'relu', 'first_units': 26, 'num_layers': 4, 'units_0': 26, 'units_1': 21, 'units_2': 21, 'units_3': 11, 'units_4': 11, 'tuner/epochs': 20, 'tuner/initial_epoch': 7, 'tuner/bracket': 1, 'tuner/round': 1, 'tuner/trial_id': '0018'}</code></pre>
+            <p>The model achieved an accuracy score of approximately 86.06%.</p>
+            <p>Below is the result of the Confusion Matrix:</p>
+            
+            <div class="results">
+                <figure>
+                    <img src="static/img/nn_confusion_matrix.png" alt="Neural Network Confusion Matrix">
+                    <figcaption>Confusion Matrix</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="findings">
+            <h2>Findings</h2>
+            <p>Contrary to initial expectations, the Neural Network model did not outperform the XGBoost model. Factors contributing to this outcome include:</p>
+            <ul>
+                <li>XGBoost's renowned predictive accuracy, especially in the banking sector</li>
+                <li>Its proficiency in handling imbalanced datasets</li>
+                <li>The desirable feature interpretability provided by XGBoost, which is especially valued in finance and service industries, contrasted with the "black-box" nature of Neural Networks</li>
+            </ul>
+        </section>
+
+        <section id="smote-explanation">
+            <h1>SMOTE (Synthetic Minority Over-sampling Technique)</h1>
+            <p>SMOTE is a technique designed to amend class imbalances by generating synthetic samples for the minority class, thereby balancing the class distribution and enhancing representation of the minority class within the dataset.</p>
+            <p>SMOTE operates by:</p>
+            <ul>
+                <li>Identifying the Minority Class: Establishing the class with fewer instances in comparison to the majority.</li>
+                <li>Finding Nearest Neighbors: For each sample in the minority class, SMOTE finds its k-nearest neighbors within the feature space.</li>
+                <li>Creating Synthetic Samples: SMOTE generates synthetic samples through interpolation between the minority class sample and its neighbors. This process forms new samples on the line segments connecting the minority class samples to their selected neighbors within the feature space.</li>
+            </ul>
+        </section>
+
+        <footer>
+            <a href="/ml-process" class="home-button">Back</a>
+        </footer>
+    </div>
+</body>
+</html>

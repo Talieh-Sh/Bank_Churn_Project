@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regression Model Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="content-wrapper">
+        <header>
+            <h1>Logistic Regression Model Analysis</h1>
+        </header>
+
+        <section id="introduction">
+            <p>Our initial approach to predict customer churn involved utilizing a Logistic Regression model, with 'Exited' as the target feature.</p>
+        </section>
+        
+        <section id="data-cleaning">
+            <h2>Data Cleaning</h2>
+            <p>Data preprocessing included the removal of N/A values and the conversion of categorical variables such as 'Gender' and 'Geography' into binary indicators.</p>
+        </section>
+
+        <section id="model-training">
+            <h2>Model Training and Results</h2>
+            <p>The Logistic Regression model was configured and trained with the following parameters:</p>
+            <ul class="parameters-list">
+                <li>Max Iterations: 200</li>
+                <li>Random State: 1</li>
+            </ul>
+            <p>An accuracy score of approximately 78.52% was attained.</p>
+            <p>The visual representations of the model's performance are as follows:</p>
+            
+            <div class="results">
+                <figure>
+                    <img src="static/img/regression_confusion_matrix.png" alt="Confusion Matrix">
+                    <figcaption>Confusion Matrix</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="static/img/regression_classreport.png" alt="Classification Report">
+                    <figcaption>Classification Report</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="static/img/regression_feature_importance.png" alt="Feature Importances">
+                    <figcaption>Feature Importances</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="findings">
+            <h2>Findings</h2>
+            <p>While the accuracy is moderate, the classification report and confusion matrix suggest the model's predictive performance for class '1' (customers that leave) could be improved. The feature importances graph provides insight into which features most significantly influence the model's predictions, offering a direction for further analysis.</p>
+        </section>
+
+        <footer>
+            <a href="/ml-process" class="home-button">Back</a>
+        </footer>
+    </div>
+</body>
+</html>
+

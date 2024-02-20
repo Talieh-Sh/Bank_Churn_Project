@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XGBoost Model Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="content-wrapper">
+        <header>
+            <h1>XGBoost Model Analysis</h1>
+        </header>
+
+        <section id="introduction">
+            <p>The third approach in our analytical exploration was the implementation of the XGBoost model, which employs ensemble learning using multiple algorithms, like decision trees, to enhance performance.</p>
+            <p>Gradient boosting techniques were used to minimize loss by adjusting the model iteratively based on errors, complemented by SMOTE and optimized hyperparameters for efficient training and performance.</p>
+        </section>
+        
+        <section id="data-cleaning">
+            <h2>Data Cleaning</h2>
+            <p>Consistent with our prior models, we applied the same data cleaning procedures, encoding categorical variables like 'Gender' and 'Geography' into binary columns, and further refined the dataset by excluding less impactful features identified during training.</p>
+        </section>
+
+        <section id="model-training">
+            <h2>Model Training and Results</h2>
+            <p>The Standard Scaler method was included to normalize the test and training data. The hyperparameters configured for the XGBoost model were:</p>
+            <ul class="parameters-list">
+                <li>Learning Rate: 0.1</li>
+                <li>n_estimators: 100</li>
+                <li>Max Depth: 5</li>
+            </ul>
+            <p>The model achieved an accuracy score of approximately 86.73%.</p>
+            <p>The following visualizations display the Confusion Matrix and Classification Report:</p>
+            
+            <div class="results">
+                <figure>
+                    <img src="static/img/xgboost_confusion_matrix.png" alt="XGBoost Confusion Matrix">
+                    <figcaption>Confusion Matrix</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="static/img/xgboost_classreport.png" alt="XGBoost Classification Report">
+                    <figcaption>Classification Report</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="static/img/xgboost_feature_importance.png" alt="XGBoost Feature Importances">
+                    <figcaption>Feature Importances</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="findings">
+            <h2>Findings</h2>
+            <p>The XGBoost model demonstrated the highest accuracy among the tested models, with the SMOTE technique notably improving the prediction for class '1' (clients that are likely to leave), while maintaining robust predictions for class '0' (clients that stay).</p>
+            <p>We advocate for the XGBoost model due to its:</p>
+            <ul>
+                <li>Superior Accuracy</li>
+                <li>Capability in Ensemble Learning</li>
+                <li>Handling of Non-Linear Relationships</li>
+                <li>Effectiveness against Overfitting with SMOTE</li>
+            </ul>
+            <p>The Classification Report reflects a strong precision and recall for class '0' and a marked improvement for class '1'. To further enhance the model's accuracy, the acquisition of a larger dataset and the exploration of innovative techniques are recommended.</p>
+        </section>
+
+        <footer>
+            <a href="/ml-process" class="home-button">Back</a>
+        </footer>
+    </div>
+</body>
+</html>

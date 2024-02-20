@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Forest Model Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="content-wrapper">
+        <header>
+            <h1>Random Forest Model Analysis</h1>
+        </header>
+
+        <section id="introduction">
+            <p>The second approach in our data analysis involved utilizing a Random Forest model. This method is highly regarded in the industry for customer retention/churn prediction due to its robust handling of feature importance and non-linear relationships.</p>
+            <p>The model's tuning simplicity further contributed to achieving a more accurate result.</p>
+        </section>
+        
+        <section id="data-cleaning">
+            <h2>Data Cleaning</h2>
+            <p>Following the procedures from our initial model, we cleaned the data by encoding categorical variables like 'Gender' and 'Geography' into binary columns. We also refined our dataset by excluding features deemed less important during the data training phase.</p>
+        </section>
+
+        <section id="model-training">
+            <h2>Model Training and Results</h2>
+            <p>Incorporating the Standard Scaler method, we aimed to enhance the model's performance further. The parameters used for the Random Forest Classifier were:</p>
+            <ul class="parameters-list">
+                <li>n_estimators: 25</li>
+                <li>Random State: 78</li>
+            </ul>
+            <p>The model achieved an accuracy score of approximately 85.63%.</p>
+            <p>Displayed below are the Confusion Matrix and Classification Report which elucidate the model's predictive capability:</p>
+            
+            <div class="results">
+                <figure>
+                    <img src="static/img/rf_confusion_matrix.png" alt="Random Forest Confusion Matrix">
+                    <figcaption>Confusion Matrix</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="static/img/rf_classreport.png" alt="Random Forest Classification Report">
+                    <figcaption>Classification Report</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="static/img/rf_feature_importance.png" alt="Random Forest Feature Importances">
+                    <figcaption>Feature Importances</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="findings">
+            <h2>Findings</h2>
+            <p>The Random Forest model showcased improved accuracy, corroborating its industry favorability for the given dataset. Notably, features such as 'Age' and 'Estimated Salary' held more significance in prediction. Although precision and recall for class '0' were high, class '1' performance was not as strong. This insight, along with the distribution of false positives in the confusion matrix, led us to explore another model, XGBoost, to refine our predictive accuracy further.</p>
+        </section>
+
+        <footer>
+            <a href="/ml-process" class="home-button">Back</a>
+        </footer>
+    </div>
+</body>
+</html>
